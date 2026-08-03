@@ -53,7 +53,7 @@ class User extends Authenticatable
             'two_factor_confirmed_at' => 'datetime',
         ];
     }
-     // Relasi
+     // Relation
     public function activityLogs() { return $this->hasMany(ActivityLog::class); }
     public function checkInTransactions() { return $this->hasMany(ParkingTransaction::class, 'check_in_by'); }
     public function checkOutTransactions() { return $this->hasMany(ParkingTransaction::class, 'check_out_by'); }
