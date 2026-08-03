@@ -26,6 +26,7 @@ class CreateNewUser implements CreatesNewUsers
 
         return User::create([
             'name' => $input['name'],
+            'username' => \Illuminate\Support\Str::slug($input['name']) . '-' . rand(1000, 9999),
             'email' => $input['email'],
             'password' => $input['password'],
         ]);
