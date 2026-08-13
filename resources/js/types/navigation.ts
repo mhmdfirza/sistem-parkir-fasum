@@ -6,9 +6,19 @@ export type BreadcrumbItem = {
     href: string;
 };
 
-export type NavItem = {
-    title: string;
-    href: NonNullable<InertiaLinkProps['href']>;
-    icon?: LucideIcon | null;
+// export type NavItem = {
+//     title: string;
+//     href: NonNullable<InertiaLinkProps['href']>;
+//     icon?: LucideIcon | null;
+//     isActive?: boolean;
+// };
+
+export interface NavItem {
+    title?: string;
+    label?: string;
+    href?: InertiaLinkProps['href'];
+    icon?: React.ElementType | null;
     isActive?: boolean;
-};
+    roles?: Array<'admin' | 'petugas' | 'owner'>;
+    children?: NavItem[];
+}
