@@ -17,15 +17,15 @@ export function NavMain({ items = [] }: { items: NavItem[] }) {
             <SidebarGroupLabel>Platform</SidebarGroupLabel>
             <SidebarMenu>
                 {items.map((item) => (
-                    <SidebarMenuItem key={item.title}>
+                    <SidebarMenuItem key={item.title || item.label}>
                         <SidebarMenuButton
                             asChild
-                            isActive={isCurrentUrl(item.href)}
-                            tooltip={{ children: item.title }}
+                            isActive={item.href ? isCurrentUrl(item.href) : false}
+                            tooltip={{ children: item.title || item.label }}
                         >
-                            <Link href={item.href} prefetch>
+                            <Link href={item.href || '#'} prefetch>
                                 {item.icon && <item.icon />}
-                                <span>{item.title}</span>
+                                <span>{item.title || item.label}</span>
                             </Link>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
